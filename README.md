@@ -1,15 +1,16 @@
 # kulfy-keyboard
-This is a sample GIF Keyboard which has base UI projects for web, iOS &amp; Android 
+## Use Kulfy SDK in your Android App (Current version - 1.0.1)
 
-To use Kulfy SDK in Android App, Please procees step by step.
+To use Kulfy SDK in Android App, Please proceed with below configuration-
 
 1. Add dependency in build.gradle
-
-    implementation 'io.github.agrawalashish1990:android:1.0.3'
+    ```gradle
+     implementation 'com.kulfyapp.sdk:android:<version>'
+    ```
     
-2. Add network_config.xml in res/xml folder with below code:
-
-   <?xml version="1.0" encoding="utf-8"?>
+2. Add/Update network_config.xml:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <debug-overrides>
         <trust-anchors>
@@ -23,17 +24,19 @@ To use Kulfy SDK in Android App, Please procees step by step.
         <domain includeSubdomains="true">api.kulfyapp.com</domain>
     </domain-config>
 </network-security-config>
+```
 
 3. Open Kulfy GIF popup -
+```kotlin
  val kulfySDK = KulfySDK(this)
                 .setAccessKey(<ACCESS_KEY_PROVIDE_BY_KULFY>)
                 .setCallback(object :KulfyMediaCallbacks{
                     override fun onExit() {
-                        TODO("Not yet implemented")
+                       //Event - when you are out of  sdk 
                     }
 
                     override fun onLoad() {
-                        TODO("Not yet implemented")
+                       //Event - when SDK is initialized
                     }
 
                     override fun onMediaDownloaded(
@@ -41,8 +44,8 @@ To use Kulfy SDK in Android App, Please procees step by step.
                         downloadURL: String,
                         shareURL: String
                     ) {
-                        TODO("Not yet implemented")
+                       //Event - when kulfy is downloaded and shared
                     }
                 })
             kulfySDK.build()
-
+```
