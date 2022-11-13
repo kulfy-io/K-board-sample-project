@@ -83,3 +83,8 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+keyboard-sdks/keyboard-android/.idea/.name
+keyboard-sdks/keyboard-android/.idea/compiler.xml
+keyboard-sdks/keyboard-android/.idea/gradle.xml
+keyboard-sdks/keyboard-android/.idea/misc.xml
+keyboard-sdks/keyboard-android/.idea/qaplug_profiles.xml
