@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "kulfysdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kulfy-io/KulfySDK-iOS/",
+      "state" : {
+        "branch" : "main",
+        "revision" : "cbebf7a6451539a5840c6603d4e46e2cafa887df"
+      }
+    }
+  ],
+  "version" : 2
+}
