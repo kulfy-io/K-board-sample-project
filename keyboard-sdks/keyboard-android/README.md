@@ -1,5 +1,5 @@
 # kulfy-keyboard - Android
-## Use Kulfy SDK in your Android App (Current version - 1.0.7)
+## Use Kulfy SDK in your Android App (Current version - 1.0.11)
 
 To use Kulfy SDK in Android App, Please proceed with below configuration-
 
@@ -11,7 +11,8 @@ To use Kulfy SDK in Android App, Please proceed with below configuration-
 2. Open Kulfy GIF popup -
 ```kotlin
  val kulfySDK = KulfySDK(this)
-                .setAccessKey(<ACCESS_KEY_PROVIDE_BY_KULFY>)
+                .setApiKey(<ACCESS_KEY_PROVIDE_BY_KULFY>)
+                .setKeyBoardId(<KBOARD_ID_PROVIDE_BY_KULFY>)
                 .setCallback(object :KulfyMediaCallbacks{
                     override fun onExit() {
                        //Event - when you are out of  sdk 
@@ -27,6 +28,10 @@ To use Kulfy SDK in Android App, Please proceed with below configuration-
                         shareURL: String
                     ) {
                        //Event - when kulfy is downloaded and shared
+                    }
+                    
+                     override fun onEventChange(eventName: String, eventValue: String) {
+                         Log.v("event trigger", "$eventName:$eventValue")
                     }
                 })
             kulfySDK.build()
