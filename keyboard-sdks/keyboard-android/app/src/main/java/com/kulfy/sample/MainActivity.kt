@@ -5,6 +5,7 @@ import android.content.ClipboardManager
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +30,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun openKulfySDK() {
         val kulfySDK = KulfySDK(this)
-            .setAccessKey("test")
+            .setApiKey("test")
+            .setKeyBoardId("test")
             .setCallback(object : KulfyMediaCallbacks {
                 override fun onExit() {
                    Toast.makeText(baseContext,"Thanks for using Kulfy SDK",Toast.LENGTH_SHORT).show()
@@ -46,6 +48,10 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     Toast.makeText(baseContext,"Downloaded successfully",Toast.LENGTH_SHORT).show()
                     openSharePopup(shareURL,pathUri)
+                }
+
+                override fun onEventChange(eventName: String, eventValue: String) {
+                    Log.v("event trigger", "$eventName:$eventValue")
                 }
             })
         kulfySDK.build()
