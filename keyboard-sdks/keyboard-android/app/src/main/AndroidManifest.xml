@@ -19,7 +19,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -27,6 +26,23 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".KActivity"
+            android:theme="@style/Theme.Transparent"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <service
+            android:name=".MyKBoardService"
+            android:directBootAware="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/sample_input_method" />
+        </service>
     </application>
 
 </manifest>

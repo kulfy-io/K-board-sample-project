@@ -14,7 +14,7 @@ import com.kulfy.sdk.sdk.KulfySDK
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var clipboardManager : ClipboardManager
+    private lateinit var clipboardManager: ClipboardManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         clipboardManager = this.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
 
-        val btnOpenSDK : Button = findViewById(R.id.btnToOpenSDK)
+        val btnOpenSDK: Button = findViewById(R.id.btnToOpenSDK)
         btnOpenSDK.setOnClickListener {
             openKulfySDK()
         }
@@ -30,34 +30,42 @@ class MainActivity : AppCompatActivity() {
 
     private fun openKulfySDK() {
         val kulfySDK = KulfySDK(this)
-            .setApiKey("test")
-            .setKeyBoardId("test")
+            .setBottomMenuVisibility(true)
+            .setApiKey("SampleAPIKey")
+            .setKeyBoardId("SampleKeyboardId")
+            .setFirebaseAnalyticsStatus(true)
             .setCallback(object : KulfyMediaCallbacks {
                 override fun onExit() {
-                   Toast.makeText(baseContext,"Thanks for using Kulfy SDK",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "Thanks for using Kulfy SDK", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
                 override fun onLoad() {
-                    Toast.makeText(baseContext,"SDK is ready to use",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "SDK is ready to use", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onMediaDownloaded(
-                    pathUri: Uri,
+                    uri: Uri,
                     downloadURL: String,
                     shareURL: String
                 ) {
-                    Toast.makeText(baseContext,"Downloaded successfully",Toast.LENGTH_SHORT).show()
-                    openSharePopup(shareURL,pathUri)
+                    Toast.makeText(baseContext, "Downloaded successfully", Toast.LENGTH_SHORT)
+                        .show()
+                    openSharePopup(shareURL, uri)
                 }
 
                 override fun onEventChange(eventName: String, eventValue: String) {
                     Log.v("event trigger", "$eventName:$eventValue")
                 }
+
+                override fun onABCClickEvent() {
+
+                }
             })
         kulfySDK.build()
     }
 
-    private fun openSharePopup(url : String, pathUri: Uri){
+    private fun openSharePopup(url: String, pathUri: Uri) {
         val clipData = ClipData.newPlainText("Kulfy", url)
         this.clipboardManager.setPrimaryClip(clipData)
 
