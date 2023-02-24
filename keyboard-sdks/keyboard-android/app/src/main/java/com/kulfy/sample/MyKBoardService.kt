@@ -6,7 +6,7 @@ import com.kulfy.sdk.service.KulfyKeyboardService
 class MyKBoardService : KulfyKeyboardService() {
 
     override fun onCreate() {
-        API_KEY = "1e513b7f-8b61-4794-bf53-0b493bf1fddb"
+        API_KEY = "<YOUR_API_KEY"
         KBOARD_ID = "KBOARD_ID"
         firebaseEnabled = true
         super.onCreate()
