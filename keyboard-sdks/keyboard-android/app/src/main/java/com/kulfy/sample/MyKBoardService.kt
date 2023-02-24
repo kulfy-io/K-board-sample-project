@@ -1,14 +1,14 @@
 package com.kulfy.sample
 
 import android.content.Intent
-import com.kulfy.sdk.service.FleskyKeyboardService
+import com.kulfy.sdk.service.KulfyKeyboardService
 
-class MyKBoardService : FleskyKeyboardService() {
+class MyKBoardService : KulfyKeyboardService() {
 
-    override fun openSDK() {
-        val intent = Intent(applicationContext, KActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-        startActivity(intent)
+    override fun onCreate() {
+        API_KEY = "1e513b7f-8b61-4794-bf53-0b493bf1fddb"
+        KBOARD_ID = "KBOARD_ID"
+        firebaseEnabled = true
+        super.onCreate()
     }
 }

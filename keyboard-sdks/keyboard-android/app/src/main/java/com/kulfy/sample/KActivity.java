@@ -15,7 +15,7 @@ import com.kulfy.sdk.interfaces.KulfyMediaCallbacks;
 import com.kulfy.sdk.sdk.KulfySDK;
 
 /**
- * Ashish Agrawal
+ * Kulfy Keyboard
  * Created on 27/10/22
  */
 public class KActivity extends AppCompatActivity implements KulfyMediaCallbacks {
@@ -63,7 +63,7 @@ public class KActivity extends AppCompatActivity implements KulfyMediaCallbacks 
 
     @Override
     public void onLoad() {
-
+        //This callback when sdk is loaded
     }
 
     @Override
@@ -73,12 +73,26 @@ public class KActivity extends AppCompatActivity implements KulfyMediaCallbacks 
 
     @Override
     public void onEventChange(@NonNull String eventName, @NonNull String eventValue) {
-
+        //This callback when user takes any action
     }
 
     @Override
     public void onABCClickEvent() {
-
+        //This callback when user clicks on ABC icon
     }
 
+    @Override
+    public void searchClear() {
+        //This callback when keyboard searchbox is cleared
+    }
+
+    @Override
+    public void searchWord(@NonNull String s) {
+        //This callback when keyboard starts searching
+    }
+
+    @Override
+    public void showInputKeyboard() {
+        //This callback when keyboard will be shown
+    }
 }

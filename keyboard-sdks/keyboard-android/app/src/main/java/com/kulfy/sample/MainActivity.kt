@@ -44,14 +44,17 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, "SDK is ready to use", Toast.LENGTH_SHORT).show()
                 }
 
+
                 override fun onMediaDownloaded(
-                    uri: Uri,
+                    uri: Uri?,
                     downloadURL: String,
                     shareURL: String
                 ) {
                     Toast.makeText(baseContext, "Downloaded successfully", Toast.LENGTH_SHORT)
                         .show()
-                    openSharePopup(shareURL, uri)
+                    uri?.let {
+                        openSharePopup(shareURL, uri)
+                    }
                 }
 
                 override fun onEventChange(eventName: String, eventValue: String) {
@@ -60,6 +63,16 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onABCClickEvent() {
 
+                }
+
+
+                override fun searchClear() {
+                }
+
+                override fun searchWord(keyword: String) {
+                }
+
+                override fun showInputKeyboard() {
                 }
             })
         kulfySDK.build()
