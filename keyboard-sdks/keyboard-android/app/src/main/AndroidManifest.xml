@@ -26,11 +26,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".KActivity"
-            android:theme="@style/Theme.Transparent"
-            android:screenOrientation="portrait"
-            android:exported="false" />
         <service
             android:name=".MyKBoardService"
             android:directBootAware="true"
