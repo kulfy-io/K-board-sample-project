@@ -1,6 +1,8 @@
 # kulfy-keyboard - Android
 ## Use Kulfy SDK in your Android App (Current version - 1.0.21)
 
+![image](https://user-images.githubusercontent.com/16154307/222071474-e351fb26-2fa7-4ff4-b3cf-f69469ca64d0.png)
+
 To use Kulfy SDK in Android App, Please proceed with below configuration-
 
 1. Add dependency in build.gradle
