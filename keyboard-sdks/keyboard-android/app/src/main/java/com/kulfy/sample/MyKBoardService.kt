@@ -7,7 +7,6 @@ class MyKBoardService : KulfyKeyboardService() {
 
     init {
         API_KEY = "<YOUR_API_KEY"
-        KBOARD_ID = "KBOARD_ID"
         firebaseEnabled = true
     }
 

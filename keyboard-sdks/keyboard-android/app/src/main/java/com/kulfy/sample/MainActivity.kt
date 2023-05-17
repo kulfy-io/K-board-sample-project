@@ -9,7 +9,9 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.kulfy.sdk.interfaces.CommentCallbacks
 import com.kulfy.sdk.interfaces.KulfyMediaCallbacks
+import com.kulfy.sdk.sdk.CommentSDK
 import com.kulfy.sdk.sdk.KulfySDK
 
 class MainActivity : AppCompatActivity() {
@@ -26,13 +28,43 @@ class MainActivity : AppCompatActivity() {
         btnOpenSDK.setOnClickListener {
             openKulfySDK()
         }
+
+        val btnToOpenCommentSDK: Button = findViewById(R.id.btnToOpenCommentSDK)
+        btnToOpenCommentSDK.setOnClickListener {
+            openCommentSDK()
+        }
+    }
+
+    private fun openCommentSDK() {
+        val channel = "group_chat"
+        val subscribeKey = "<subs - key>"
+        val publishKey = "<pub - key>"
+        val width = 100   //width of kulfy
+        val height = 100  //height of kulfy
+
+        CommentSDK(this)
+            .setChannel(channel)
+            .setPublisherKey(publishKey)
+            .setSubscriberKey(subscribeKey)
+            .setUserInfo("<userId>","<userName>")
+            .setContentType("<content type Video/gif")
+            .setKeyboardInfo(apiKey = "<API_KEY>")
+            .setKulfyInfo("<url>","<name>",width,height)
+            .setFirebaseAnalytics(true)
+            .setCallback(object : CommentCallbacks {
+                override fun onExit() {
+                }
+
+                override fun onLoad() {
+                }
+
+            }).build()
     }
 
     private fun openKulfySDK() {
         val kulfySDK = KulfySDK(this)
             .setBottomMenuVisibility(true)
             .setApiKey("SampleAPIKey")
-            .setKeyBoardId("SampleKeyboardId")
             .setFirebaseAnalyticsStatus(true)
             .setCallback(object : KulfyMediaCallbacks {
                 override fun onExit() {
